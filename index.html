@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Portfolio — Digital Agency</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+ 
+<!-- Background particle canvas -->
+<canvas id="bg-canvas"></canvas>
+ 
+<!-- ── NAV ── -->
+<nav id="navbar">
+  <a href="#hero" class="logo">
+    <img src="assets/logo.png" alt="Webify Logo" class="logo-img"/>
+    <div class="logo-text-group">
+      <span class="logo-name">WEBI<span>FY</span></span>
+      <span class="logo-tagline">Digital Agency</span>
+    </div>
+  </a>
+ 
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Work</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+ 
+  <a href="#contact" class="nav-cta">Let's Talk →</a>
+</nav>
+ 
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-inner">
+    <!-- left -->
+    <div class="hero-left">
+      <div class="hero-badge">
+        <div class="hero-badge-dot"></div>
+        Web Design &amp; Development Agency
+      </div>
+ 
+      <h1 class="hero-title">
+        We Build Websites<br>
+        That <span class="grad">Grow Businesses</span>
+      </h1>
+ 
+      <p class="hero-desc">
+        We create modern, high-performing websites that help businesses attract more customers and grow online.
+      </p>
+ 
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Get Your Website →</a>
+        <a href="#portfolio" class="btn-secondary">
+          <div class="play-icon">▶</div>
+          View Our Work
+        </a>
+      </div>
+ 
+      <div class="hero-tags">
+        <div class="hero-tag"><div class="check-icon">✓</div> Fast Delivery</div>
+        <div class="hero-tag"><div class="check-icon">✦</div> Modern Design</div>
+        <div class="hero-tag"><div class="check-icon">↗</div> SEO Optimized</div>
+        <div class="hero-tag"><div class="check-icon">◎</div> 24/7 Support</div>
+      </div>
+    </div>
+ 
+    <!-- right — laptop mockup SVG -->
+    <div class="hero-right" id="laptop-wrapper">
+      <div class="laptop-glow"></div>
+ 
+      <!-- floating orbs -->
+      <div class="orb orb1"></div>
+      <div class="orb orb2"></div>
+      <div class="orb orb3"></div>
+      <div class="orb orb4"></div>
+ 
+      <svg class="laptop-svg" viewBox="0 0 540 380" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="screenG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0d1f3c"/>
+            <stop offset="100%" stop-color="#091428"/>
+          </linearGradient>
+          <linearGradient id="bodyG" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#1a2235"/>
+            <stop offset="100%" stop-color="#0d1525"/>
+          </linearGradient>
+          <linearGradient id="cyanG" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#22d3ee"/>
+            <stop offset="100%" stop-color="#3b82f6"/>
+          </linearGradient>
+          <linearGradient id="heroCardG" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#0f2044"/>
+            <stop offset="100%" stop-color="#0a1628"/>
+          </linearGradient>
+          <filter id="softglow">
+            <feGaussianBlur stdDeviation="3" result="blur"/>
+            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+          </filter>
+          <clipPath id="screenClip">
+            <rect x="58" y="28" width="424" height="268" rx="6"/>
+          </clipPath>
+        </defs>
+ 
+        <!-- laptop body -->
+        <rect x="30" y="310" width="480" height="18" rx="6" fill="#0d1525" stroke="#1e3a5f" stroke-width="1"/>
+        <rect x="45" y="318" width="450" height="6" rx="3" fill="#0a1020"/>
+        <!-- hinge -->
+        <rect x="38" y="306" width="464" height="10" rx="3" fill="#111d35"/>
+        <!-- lid -->
+        <rect x="50" y="24" width="440" height="284" rx="14" fill="url(#bodyG)" stroke="#1e3a5f" stroke-width="1.5"/>
+        <!-- screen bezel -->
+        <rect x="56" y="30" width="428" height="272" rx="10" fill="#08101e"/>
+        <!-- screen -->
+        <rect x="58" y="32" width="424" height="268" rx="8" fill="url(#screenG)"/>
+ 
+        <!-- screen content clipped -->
+        <g clip-path="url(#screenClip)">
+          <!-- top bar -->
+          <rect x="58" y="32" width="424" height="36" fill="rgba(0,0,0,0.3)"/>
+          <circle cx="74" cy="50" r="5" fill="#ff5f57"/>
+          <circle cx="88" cy="50" r="5" fill="#febc2e"/>
+          <circle cx="102" cy="50" r="5" fill="#28c840"/>
+          <!-- nav items -->
+          <rect x="130" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
+          <rect x="176" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
+          <rect x="222" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
+          <rect x="388" y="42" width="60" height="16" rx="4" fill="url(#cyanG)" opacity="0.8"/>
+ 
+          <!-- hero area -->
+          <rect x="58" y="68" width="180" height="232" fill="rgba(0,0,0,0.15)"/>
+          <!-- big heading lines -->
+          <rect x="70" y="88" width="120" height="10" rx="3" fill="rgba(255,255,255,0.7)"/>
+          <rect x="70" y="104" width="150" height="10" rx="3" fill="rgba(255,255,255,0.7)"/>
+          <rect x="70" y="120" width="100" height="10" rx="3" fill="url(#cyanG)" opacity="0.9"/>
+          <!-- subtext -->
+          <rect x="70" y="140" width="140" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+          <rect x="70" y="152" width="120" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
+          <!-- CTA buttons -->
+          <rect x="70" y="170" width="80" height="22" rx="6" fill="url(#cyanG)" opacity="0.9"/>
+          <rect x="158" y="170" width="70" height="22" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
+ 
+          <!-- right side of screen — big card mockup -->
+          <rect x="250" y="75" width="220" height="215" rx="12" fill="url(#heroCardG)" stroke="rgba(34,211,238,0.2)" stroke-width="1"/>
+          <!-- card header -->
+          <rect x="262" y="87" width="80" height="8" rx="3" fill="rgba(255,255,255,0.6)"/>
+          <rect x="262" y="101" width="60" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
+          <!-- abstract shapes in card -->
+          <circle cx="390" cy="160" r="60" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.12)" stroke-width="1"/>
+          <circle cx="390" cy="160" r="40" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.15)" stroke-width="1"/>
+          <circle cx="390" cy="160" r="22" fill="rgba(34,211,238,0.12)"/>
+          <rect x="262" y="240" width="90" height="18" rx="5" fill="rgba(34,211,238,0.6)" opacity="0.8"/>
+          <rect x="358" y="240" width="60" height="18" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
+ 
+          <!-- floating sphere 1 -->
+          <circle cx="230" cy="200" r="20" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
+          <!-- floating sphere 2 -->
+          <circle cx="132" cy="260" r="14" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
+          <!-- floating card -->
+          <rect x="390" y="48" width="80" height="55" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(34,211,238,0.15)" stroke-width="1" transform="rotate(-8 430 75)"/>
+ 
+          <!-- glow ring around screen -->
+          <rect x="58" y="32" width="424" height="268" rx="8" fill="none" stroke="rgba(34,211,238,0.06)" stroke-width="2"/>
+        </g>
+ 
+        <!-- camera dot -->
+        <circle cx="270" cy="30" r="3" fill="#1a2a42"/>
+        <circle cx="270" cy="30" r="1.5" fill="#22d3ee" opacity="0.4"/>
+      </svg>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── CLIENTS ── -->
+<div id="clients">
+  <div class="clients-inner">
+    <div class="clients-label">Why clients choose us</div>
+    <div class="logos-track">
+
+      <div class="logo-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87L18.18 21 12 17.77 5.82 21 7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+        Free Demo Before Payment
+      </div>
+
+      <div class="logo-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+        </svg>
+        Fast Delivery (3–5 Days)
+      </div>
+
+      <div class="logo-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+        </svg>
+        100% Satisfaction Guarantee
+      </div>
+
+      <div class="logo-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+        </svg>
+        Mobile Responsive Design
+      </div>
+
+      <div class="logo-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+        </svg>
+        SEO Optimized by Default
+      </div>
+
+     
+
+    </div>
+  </div>
+</div>
+
+<!-- ── STATS ── -->
+<section id="stats">
+  <div class="stats-inner">
+    <div class="stats-grid reveal">
+
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
+        <div class="stat-num">50+</div>
+        <div class="stat-label">Projects Completed</div>
+        <div class="stat-desc">Successful projects delivered across various industries.</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/>
+            <circle cx="9" cy="7" r="4"/>
+            <path d="M23 21v-2a4 4 0 00-3-3.87"/>
+            <path d="M16 3.13a4 4 0 010 7.75"/>
+          </svg>
+        </div>
+        <div class="stat-num">30+</div>
+        <div class="stat-label">Happy Clients</div>
+        <div class="stat-desc">Businesses that trust us for their digital growth.</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+          </svg>
+        </div>
+        <div class="stat-num">2+</div>
+        <div class="stat-label">Years Experience</div>
+        <div class="stat-desc">Delivering high-quality digital solutions with passion.</div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon-box">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 010 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <div class="stat-num">24/7</div>
+        <div class="stat-label">Support</div>
+        <div class="stat-desc">We're always here to help you succeed.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+ 
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">What We Do</div>
+      <h2 class="section-title">Services We <span class="grad">Offer</span></h2>
+      <p class="section-sub">From design to deployment, we handle everything so you can focus on running your business.</p>
+    </div>
+    <div class="services-grid">
+      <div class="srv-card reveal">
+        <div class="srv-icon">🎨</div>
+        <div class="srv-title">UI/UX Design</div>
+        <p class="srv-desc">Beautiful, user-centered interfaces that convert visitors into loyal customers. Every pixel crafted with intent.</p>
+        <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">Figma</span><span class="srv-tag">Prototyping</span><span class="srv-tag">Wireframing</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">💻</div>
+        <div class="srv-title">Web Development</div>
+        <p class="srv-desc">Fast, scalable, and fully responsive websites built with the latest technologies and best practices.</p>
+        <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">React</span><span class="srv-tag">Next.js</span><span class="srv-tag">Node.js</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">🛒</div>
+        <div class="srv-title">E-Commerce</div>
+        <p class="srv-desc">Powerful online stores that drive sales — with seamless checkout, inventory management, and analytics.</p>
+         <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">Shopify</span><span class="srv-tag">WooCommerce</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">📱</div>
+        <div class="srv-title">Mobile Apps</div>
+        <p class="srv-desc">Cross-platform mobile applications that deliver native-like performance on iOS and Android.</p>
+         <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">React Native</span><span class="srv-tag">Flutter</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">🔍</div>
+        <div class="srv-title">SEO & Marketing</div>
+        <p class="srv-desc">Get found on Google. We optimize your site to rank higher and attract organic traffic that converts.</p>
+         <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">On-Page SEO</span><span class="srv-tag">Analytics</span></div>
+      </div>
+      <div class="srv-card reveal">
+        <div class="srv-icon">⚡</div>
+        <div class="srv-title">Video Edit</div>
+        <p class="srv-desc">Speed up your existing website. Better performance means better rankings and higher conversions.</p>
+         <div class="srv-divider"></div>
+         <div class="srv-tags"><span class="srv-tag">Core Web Vitals</span><span class="srv-tag">CDN</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Our Work</div>
+      <h2 class="section-title">Featured <span class="grad">Projects</span></h2>
+      <p class="section-sub">A curated selection of projects that showcase our craft, creativity, and commitment to results.</p>
+    </div>
+    <div class="portfolio-grid">
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt1"><span class="proj-badge">E-Commerce</span>🛍️</div>
+        <div class="proj-body">
+          <div class="proj-title">LuxeShop — Fashion Store</div>
+          <p class="proj-desc">Premium fashion e-commerce with advanced filtering, wishlist, and seamless checkout.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt2"><span class="proj-badge">SaaS</span>📊</div>
+        <div class="proj-body">
+          <div class="proj-title">Analytica Dashboard</div>
+          <p class="proj-desc">Real-time analytics platform with interactive charts and custom report generation.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt3"><span class="proj-badge">Web App</span>🎵</div>
+        <div class="proj-body">
+          <div class="proj-title">Melodia — Music Platform</div>
+          <p class="proj-desc">Music streaming webapp with playlists, social sharing, and artist dashboards.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt4"><span class="proj-badge">Corporate</span>🏢</div>
+        <div class="proj-body">
+          <div class="proj-title">GoldMark Finance</div>
+          <p class="proj-desc">Corporate website for a financial advisory firm, emphasizing trust and lead generation.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt5"><span class="proj-badge">Portfolio</span>📸</div>
+        <div class="proj-body">
+          <div class="proj-title">Studio Azure — Photography</div>
+          <p class="proj-desc">Stunning photography portfolio with full-screen galleries and booking integration.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+      <div class="proj-card reveal">
+        <div class="proj-thumb pt6"><span class="proj-badge">Landing Page</span>🚀</div>
+        <div class="proj-body">
+          <div class="proj-title">LaunchPad — Product Launch</div>
+          <p class="proj-desc">High-converting launch page that drove 3,000+ sign-ups in the first week.</p>
+          <a href="#" class="proj-link">View Case Study →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── PROCESS ── -->
+<section id="process">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">How We Work</div>
+      <h2 class="section-title">Our <span class="grad">Process</span></h2>
+      <p class="section-sub">A streamlined 4-step process that delivers results fast — without cutting corners.</p>
+    </div>
+    <div class="process-grid reveal">
+      <div class="proc-step">
+        <div class="proc-num">01</div>
+        <div class="proc-title">Discovery</div>
+        <p class="proc-desc">We deep-dive into your business, goals, and target audience to understand exactly what you need.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">02</div>
+        <div class="proc-title">Design</div>
+        <p class="proc-desc">Our designers craft pixel-perfect mockups and prototypes for your approval before any code is written.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">03</div>
+        <div class="proc-title">Development</div>
+        <p class="proc-desc">We build a fast, responsive, scalable product using modern technologies and clean code.</p>
+      </div>
+      <div class="proc-step">
+        <div class="proc-num">04</div>
+        <div class="proc-title">Launch & Support</div>
+        <p class="proc-desc">We deploy, test thoroughly, and stay by your side post-launch to ensure everything runs perfectly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── TESTIMONIALS ── -->
+<section id="testimonials">
+  <div class="section-inner">
+    <div class="reveal">
+      <div class="section-eyebrow">Client Reviews</div>
+      <h2 class="section-title">What Clients <span class="grad">Say</span></h2>
+      <p class="section-sub">We let our work speak — but our clients say it better.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"They delivered our e-commerce store in under 3 weeks. The design is stunning and our conversion rate jumped 40% in the first month."</p>
+        <div class="testi-author">
+          <div class="author-av">AR</div>
+          <div><div class="author-name">Arjun Rathi</div><div class="author-role">Founder, LuxeShop</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"Professional, responsive, and incredibly talented. The team understood our brand vision from day one and executed it flawlessly."</p>
+        <div class="testi-author">
+          <div class="author-av">SM</div>
+          <div><div class="author-name">Sana Mirza</div><div class="author-role">CEO, GoldMark Finance</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="stars"><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div><div class="star"></div></div>
+        <p class="testi-text">"Our new website loads in under 1 second and looks amazing. Our leads from organic search have doubled since the redesign."</p>
+        <div class="testi-author">
+          <div class="author-av">RK</div>
+          <div><div class="author-name">Rahul Kumar</div><div class="author-role">Marketing Head, Analytica</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="reveal">
+    <div class="section-eyebrow" style="display:inline-flex;">Get In Touch</div>
+    <h2 class="section-title" style="text-align:center;">Ready to Build <span class="grad">Something Great?</span></h2>
+    <p class="section-sub" style="text-align:center;margin:0 auto 0;">Tell us about your project and we'll get back to you within 24 hours.</p>
+  </div>
+  <div class="contact-card reveal">
+    <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Your Name</label>
+          <input class="form-input" type="text" placeholder="John Doe"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input class="form-input" type="email" placeholder="john@company.com"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Phone Number</label>
+          <input class="form-input" type="tel" placeholder="+91 98000 00000"/>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Service Needed</label>
+          <input class="form-input" type="text" placeholder="Web Design, SEO..."/>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Project Details</label>
+        <textarea class="form-textarea" placeholder="Tell us about your project, goals, and timeline..."></textarea>
+      </div>
+      <button class="btn-submit" type="submit">Send Message →</button>
+    </form>
+  </div>
+</section>
+ 
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-logo-name">Port<span>folio</span></div>
+  <div class="footer-links">
+    <a href="#services">Services</a>
+    <a href="#portfolio">Work</a>
+    <a href="#process">Process</a>
+    <a href="#testimonials">Reviews</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="footer-copy">© 2025 Portfolio Agency. All rights reserved.</div>
+</footer>
+ 
+<script src="script.js"></script>
+</body>
+</html>
+ 
