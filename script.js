@@ -150,14 +150,42 @@ accItems.forEach(item => {
 
 // open first by default
 if (accItems.length) openItem(accItems[0]);
-// ── PROCESS ORBIT — auto popup, no typewriter ──
+// ── PROCESS ORBIT — hover opens + typewriter in popup ──
 const orbitSteps = document.querySelectorAll('.orbit-step');
 let currentPop = 0;
 let popTimer = null;
 
+const popupTexts = [
+  "We deep-dive into your business, goals, and target audience to craft the perfect strategy for success.",
+  "Pixel-perfect mockups and prototypes crafted for your approval before any code is written.",
+  "Fast, responsive, scalable websites built with modern technologies and clean code practices.",
+  "We deploy, test thoroughly, and stay by your side post-launch to ensure everything runs perfectly."
+];
+
+function typeText(el, text, speed = 22) {
+  el.textContent = '';
+  let i = 0;
+  if (el._t) clearInterval(el._t);
+  el._t = setInterval(() => {
+    if (i < text.length) { el.textContent += text[i]; i++; }
+    else clearInterval(el._t);
+  }, speed);
+}
+
 function popStep(index) {
-  orbitSteps.forEach(s => s.classList.remove('popped'));
-  orbitSteps[index].classList.add('popped');
+  orbitSteps.forEach((s, si) => {
+    s.classList.remove('popped');
+    const d = s.querySelector('.popup-desc');
+    if (d && d._t) clearInterval(d._t);
+    if (d) d.textContent = '';
+  });
+
+  const step = orbitSteps[index];
+  step.classList.add('popped');
+  const desc = step.querySelector('.popup-desc');
+  if (desc) {
+    setTimeout(() => typeText(desc, popupTexts[index]), 300);
+  }
 }
 
 function startAuto() {
@@ -165,23 +193,26 @@ function startAuto() {
   popTimer = setInterval(() => {
     currentPop = (currentPop + 1) % orbitSteps.length;
     popStep(currentPop);
-  }, 3200);
+  }, 3800);
 }
 
 if (orbitSteps.length) startAuto();
 
 orbitSteps.forEach((step, i) => {
   const planet = step.querySelector('.step-planet');
+
   planet.addEventListener('mouseenter', () => {
     clearInterval(popTimer);
     popStep(i);
     currentPop = i;
   });
+
   planet.addEventListener('mouseleave', () => {
     clearInterval(popTimer);
+    popStep(currentPop);
     popTimer = setInterval(() => {
       currentPop = (currentPop + 1) % orbitSteps.length;
       popStep(currentPop);
-    }, 3200);
+    }, 3800);
   });
 });

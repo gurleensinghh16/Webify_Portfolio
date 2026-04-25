@@ -135,9 +135,10 @@ nav.scrolled{
   line-height:1;
 }
 .logo-name span{
-  color:#ffffff;
-  -webkit-text-fill-color:#ffffff;
-  background:none;
+  background:linear-gradient(135deg,var(--cyan),var(--blue));
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  background-clip:text;
 }
 .logo-text-group{
   display:flex;flex-direction:column;gap:1px;
@@ -877,7 +878,7 @@ nav.scrolled{
 .process-orbit{
   position:relative;
   width:100%;
-  height:700px;
+  height:820px;
   display:flex;
   align-items:center;
   justify-content:center;
@@ -1009,8 +1010,8 @@ nav.scrolled{
 /* ── ORBIT TRACK invisible ── */
 .orbit-track{
   position:absolute;
-  width:560px;
-  height:560px;
+  width:680px;
+  height:680px;
   border-radius:50%;
   border:none;
   animation:orbitRotate 30s linear infinite;
@@ -1024,10 +1025,10 @@ nav.scrolled{
 /* ── STEP positions ── */
 .orbit-step{
   position:absolute;
-  width:150px;
-  height:150px;
-  margin-left:-75px;
-  margin-top:-75px;
+  width:200px;
+  height:200px;
+  margin-left:-100px;
+  margin-top:-100px;
 }
 
 .orbit-step[data-step="0"]{ top:0%;left:50%; }
@@ -1042,13 +1043,13 @@ nav.scrolled{
 
 /* ── PLANET ── */
 .step-planet{
-  width:150px;
-  height:150px;
-  border-radius:28px;
+  width:200px;
+  height:200px;
+  border-radius:32px;
   background:linear-gradient(135deg,
-    color-mix(in srgb, var(--p-color) 22%, #060810),
-    color-mix(in srgb, var(--p-color2) 12%, #060810));
-  border:2px solid color-mix(in srgb, var(--p-color) 50%, transparent);
+    color-mix(in srgb, var(--p-color) 28%, #060810),
+    color-mix(in srgb, var(--p-color2) 15%, #060810));
+  border:2px solid color-mix(in srgb, var(--p-color) 55%, transparent);
   display:flex;
   flex-direction:column;
   align-items:center;
@@ -1059,13 +1060,14 @@ nav.scrolled{
   animation:counterRotate 30s linear infinite;
   transition:
     transform 0.5s cubic-bezier(0.34,1.56,0.64,1),
-    box-shadow 0.4s ease,
+    box-shadow 0.5s ease,
     border-color 0.3s ease;
   box-shadow:
-    0 12px 40px rgba(0,0,0,0.5),
-    0 0 40px color-mix(in srgb, var(--p-color) 35%, transparent),
-    0 0 80px color-mix(in srgb, var(--p-color) 15%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--p-color) 20%, transparent);
+    0 16px 50px rgba(0,0,0,0.6),
+    0 0 50px color-mix(in srgb, var(--p-color) 40%, transparent),
+    0 0 100px color-mix(in srgb, var(--p-color) 18%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--p-color) 25%, transparent),
+    inset 0 0 40px color-mix(in srgb, var(--p-color) 06%, transparent);
   overflow:hidden;
 }
 
@@ -1104,44 +1106,46 @@ nav.scrolled{
 
 .planet-icon{
   position:relative;z-index:1;
-  width:52px;height:52px;
-  border-radius:14px;
-  background:color-mix(in srgb, var(--p-color) 15%, transparent);
-  border:1px solid color-mix(in srgb, var(--p-color) 30%, transparent);
+  width:64px;height:64px;
+  border-radius:18px;
+  background:color-mix(in srgb, var(--p-color) 18%, transparent);
+  border:1px solid color-mix(in srgb, var(--p-color) 35%, transparent);
   display:flex;align-items:center;justify-content:center;
+  box-shadow:0 0 20px color-mix(in srgb, var(--p-color) 25%, transparent);
 }
 
 .planet-icon svg{
-  width:26px;height:26px;
+  width:32px;height:32px;
   stroke:var(--p-color);
-  filter:drop-shadow(0 0 8px var(--p-color));
+  filter:drop-shadow(0 0 10px var(--p-color));
 }
 
 .planet-label{
-  font-size:11px;
+  font-size:14px;
   font-weight:900;
   color:#ffffff;
-  letter-spacing:0.1em;
+  letter-spacing:0.08em;
   text-transform:uppercase;
   position:relative;z-index:1;
   text-align:center;
-  text-shadow:0 0 15px color-mix(in srgb, var(--p-color) 80%, transparent);
+  text-shadow:0 0 20px color-mix(in srgb, var(--p-color) 90%, transparent);
 }
 
 .planet-num{
-  font-size:10px;
+  font-size:11px;
   font-weight:700;
-  color:color-mix(in srgb, var(--p-color) 90%, white);
-  letter-spacing:0.1em;
+  color:color-mix(in srgb, var(--p-color) 95%, white);
+  letter-spacing:0.12em;
   position:relative;z-index:1;
-  opacity:0.7;
+  opacity:0.8;
 }
+
 .planet-desc{
-  font-size:9.5px;
-  color:color-mix(in srgb, var(--p-color) 90%, white);
+  font-size:11px;
+  color:color-mix(in srgb, var(--p-color) 95%, white);
   text-align:center;
   line-height:1.5;
-  padding:0 10px;
+  padding:0 14px;
   position:relative;z-index:1;
   opacity:0.85;
   font-weight:500;
@@ -1149,64 +1153,67 @@ nav.scrolled{
 
 /* hover */
 .step-planet:hover{
-  transform:rotate(0deg) scale(1.35) !important;
+  transform:rotate(0deg) scale(1.15) !important;
   border-color:var(--p-color);
   box-shadow:
-    0 0 0 4px color-mix(in srgb, var(--p-color) 20%, transparent),
-    0 0 0 8px color-mix(in srgb, var(--p-color) 10%, transparent),
-    0 24px 70px rgba(0,0,0,0.8),
-    0 0 80px color-mix(in srgb, var(--p-color) 60%, transparent),
-    0 0 160px color-mix(in srgb, var(--p-color) 25%, transparent),
-    inset 0 0 30px color-mix(in srgb, var(--p-color) 15%, transparent);
+    0 0 0 3px color-mix(in srgb, var(--p-color) 30%, transparent),
+    0 0 0 8px color-mix(in srgb, var(--p-color) 12%, transparent),
+    0 0 0 16px color-mix(in srgb, var(--p-color) 05%, transparent),
+    0 28px 80px rgba(0,0,0,0.8),
+    0 0 100px color-mix(in srgb, var(--p-color) 70%, transparent),
+    0 0 200px color-mix(in srgb, var(--p-color) 30%, transparent),
+    inset 0 0 50px color-mix(in srgb, var(--p-color) 12%, transparent);
+}
+.step-planet:hover .planet-icon{
+  box-shadow:0 0 40px color-mix(in srgb, var(--p-color) 60%, transparent);
 }
 .step-planet:hover .planet-icon svg{
-  filter:drop-shadow(0 0 16px var(--p-color));
+  filter:drop-shadow(0 0 20px var(--p-color));
 }
-
 /* ── POPUP ── */
 .step-popup{
   position:absolute;
-  width:230px;
-  background:linear-gradient(135deg,rgba(6,8,16,0.98),rgba(10,16,32,0.96));
-  border:1px solid color-mix(in srgb, var(--p-color) 35%, transparent);
-  border-radius:18px;
-  padding:20px 22px;
+  width:280px;
+  background:linear-gradient(135deg,rgba(6,8,16,0.99),rgba(10,16,32,0.97));
+  border:1px solid color-mix(in srgb, var(--p-color) 40%, transparent);
+  border-radius:22px;
+  padding:26px 28px;
   pointer-events:none;
   opacity:0;
   z-index:20;
   backdrop-filter:blur(24px);
   box-shadow:
-    0 24px 70px rgba(0,0,0,0.8),
-    0 0 50px color-mix(in srgb, var(--p-color) 18%, transparent),
-    inset 0 1px 0 color-mix(in srgb, var(--p-color) 15%, transparent);
+    0 30px 80px rgba(0,0,0,0.85),
+    0 0 60px color-mix(in srgb, var(--p-color) 22%, transparent),
+    0 0 120px color-mix(in srgb, var(--p-color) 08%, transparent),
+    inset 0 1px 0 color-mix(in srgb, var(--p-color) 20%, transparent);
   animation:counterRotate 30s linear infinite;
-  transition:opacity 0.4s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+  transition:opacity 0.45s ease, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
 }
 
 .step-popup::before{
   content:'';
   position:absolute;
   top:0;left:0;right:0;height:2px;
-  border-radius:18px 18px 0 0;
+  border-radius:22px 22px 0 0;
   background:linear-gradient(90deg,transparent,var(--p-color),transparent);
 }
-
 /* popup positions */
 .orbit-step[data-step="0"] .step-popup{
-  top:115%;left:50%;
-  transform:translateX(-50%) translateY(12px) scale(0.88);
+  top:108%;left:50%;
+  transform:translateX(-50%) translateY(14px) scale(0.88);
 }
 .orbit-step[data-step="1"] .step-popup{
-  top:50%;right:115%;
-  transform:translateY(-50%) translateX(-12px) scale(0.88);
+  top:50%;right:108%;
+  transform:translateY(-50%) translateX(-14px) scale(0.88);
 }
 .orbit-step[data-step="2"] .step-popup{
-  bottom:115%;left:50%;
-  transform:translateX(-50%) translateY(-12px) scale(0.88);
+  bottom:108%;left:50%;
+  transform:translateX(-50%) translateY(-14px) scale(0.88);
 }
 .orbit-step[data-step="3"] .step-popup{
-  top:50%;left:115%;
-  transform:translateY(-50%) translateX(12px) scale(0.88);
+  top:50%;left:108%;
+  transform:translateY(-50%) translateX(14px) scale(0.88);
 }
 
 .step-planet:hover ~ .step-popup,
@@ -1228,41 +1235,44 @@ nav.scrolled{
 .orbit-step[data-step="3"].popped .step-popup{
   transform:translateY(-50%) translateX(0) scale(1);
 }
-
 .popup-title{
-  font-size:15px;
-  font-weight:800;
+  font-size:17px;
+  font-weight:900;
   color:#ffffff;
-  margin-bottom:10px;
+  margin-bottom:12px;
   letter-spacing:-0.01em;
-  text-shadow:0 0 20px color-mix(in srgb, var(--p-color) 70%, transparent);
+  text-shadow:0 0 25px color-mix(in srgb, var(--p-color) 80%, transparent);
 }
 
 .popup-desc{
-  font-size:13px;
-  color:#a0b4d0;
-  line-height:1.7;
-  min-height:44px;
+  font-size:13.5px;
+  color:#b0c4d8;
+  line-height:1.75;
+  min-height:50px;
 }
 
 /* ── RESPONSIVE ── */
 @media(max-width:1024px){
-  .orbit-track{ width:440px; height:440px; }
+  .process-orbit{ height:700px; }
+  .orbit-track{ width:520px; height:520px; }
   .orbit-hub{ width:180px; height:180px; }
-  .orbit-step{ width:120px; height:120px; margin-left:-60px; margin-top:-60px; }
-  .step-planet{ width:120px; height:120px; border-radius:22px; }
+  .orbit-step{ width:160px; height:160px; margin-left:-80px; margin-top:-80px; }
+  .step-planet{ width:160px; height:160px; border-radius:26px; }
+  .planet-icon{ width:50px; height:50px; }
+  .planet-icon svg{ width:24px; height:24px; }
+  .planet-label{ font-size:12px; }
 }
-
 @media(max-width:768px){
-  .process-orbit{ height:520px; }
-  .orbit-track{ width:320px; height:320px; }
+  .process-orbit{ height:560px; }
+  .orbit-track{ width:360px; height:360px; }
   .orbit-hub{ width:130px; height:130px; }
-  .orbit-step{ width:90px; height:90px; margin-left:-45px; margin-top:-45px; }
-  .step-planet{ width:90px; height:90px; border-radius:18px; }
-  .step-popup{ width:170px; font-size:11px; }
-  .planet-label{ font-size:9px; }
+  .orbit-step{ width:110px; height:110px; margin-left:-55px; margin-top:-55px; }
+  .step-planet{ width:110px; height:110px; border-radius:20px; }
+  .step-popup{ width:190px; }
+  .planet-label{ font-size:10px; }
   .planet-icon{ width:38px; height:38px; }
   .planet-icon svg{ width:18px; height:18px; }
+  .planet-desc{ display:none; }
 }
 
 /* ── TESTIMONIALS ── */
