@@ -150,3 +150,38 @@ accItems.forEach(item => {
 
 // open first by default
 if (accItems.length) openItem(accItems[0]);
+// ── PROCESS ORBIT — auto popup, no typewriter ──
+const orbitSteps = document.querySelectorAll('.orbit-step');
+let currentPop = 0;
+let popTimer = null;
+
+function popStep(index) {
+  orbitSteps.forEach(s => s.classList.remove('popped'));
+  orbitSteps[index].classList.add('popped');
+}
+
+function startAuto() {
+  popStep(currentPop);
+  popTimer = setInterval(() => {
+    currentPop = (currentPop + 1) % orbitSteps.length;
+    popStep(currentPop);
+  }, 3200);
+}
+
+if (orbitSteps.length) startAuto();
+
+orbitSteps.forEach((step, i) => {
+  const planet = step.querySelector('.step-planet');
+  planet.addEventListener('mouseenter', () => {
+    clearInterval(popTimer);
+    popStep(i);
+    currentPop = i;
+  });
+  planet.addEventListener('mouseleave', () => {
+    clearInterval(popTimer);
+    popTimer = setInterval(() => {
+      currentPop = (currentPop + 1) % orbitSteps.length;
+      popStep(currentPop);
+    }, 3200);
+  });
+});
