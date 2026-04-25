@@ -6,6 +6,7 @@
 <title>Portfolio — Digital Agency</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 </head>
 <body>
  
@@ -70,108 +71,9 @@
     </div>
  
     <!-- right — laptop mockup SVG -->
-    <div class="hero-right" id="laptop-wrapper">
-      <div class="laptop-glow"></div>
- 
-      <!-- floating orbs -->
-      <div class="orb orb1"></div>
-      <div class="orb orb2"></div>
-      <div class="orb orb3"></div>
-      <div class="orb orb4"></div>
- 
-      <svg class="laptop-svg" viewBox="0 0 540 380" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="screenG" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0d1f3c"/>
-            <stop offset="100%" stop-color="#091428"/>
-          </linearGradient>
-          <linearGradient id="bodyG" x1="0%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stop-color="#1a2235"/>
-            <stop offset="100%" stop-color="#0d1525"/>
-          </linearGradient>
-          <linearGradient id="cyanG" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#22d3ee"/>
-            <stop offset="100%" stop-color="#3b82f6"/>
-          </linearGradient>
-          <linearGradient id="heroCardG" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#0f2044"/>
-            <stop offset="100%" stop-color="#0a1628"/>
-          </linearGradient>
-          <filter id="softglow">
-            <feGaussianBlur stdDeviation="3" result="blur"/>
-            <feComposite in="SourceGraphic" in2="blur" operator="over"/>
-          </filter>
-          <clipPath id="screenClip">
-            <rect x="58" y="28" width="424" height="268" rx="6"/>
-          </clipPath>
-        </defs>
- 
-        <!-- laptop body -->
-        <rect x="30" y="310" width="480" height="18" rx="6" fill="#0d1525" stroke="#1e3a5f" stroke-width="1"/>
-        <rect x="45" y="318" width="450" height="6" rx="3" fill="#0a1020"/>
-        <!-- hinge -->
-        <rect x="38" y="306" width="464" height="10" rx="3" fill="#111d35"/>
-        <!-- lid -->
-        <rect x="50" y="24" width="440" height="284" rx="14" fill="url(#bodyG)" stroke="#1e3a5f" stroke-width="1.5"/>
-        <!-- screen bezel -->
-        <rect x="56" y="30" width="428" height="272" rx="10" fill="#08101e"/>
-        <!-- screen -->
-        <rect x="58" y="32" width="424" height="268" rx="8" fill="url(#screenG)"/>
- 
-        <!-- screen content clipped -->
-        <g clip-path="url(#screenClip)">
-          <!-- top bar -->
-          <rect x="58" y="32" width="424" height="36" fill="rgba(0,0,0,0.3)"/>
-          <circle cx="74" cy="50" r="5" fill="#ff5f57"/>
-          <circle cx="88" cy="50" r="5" fill="#febc2e"/>
-          <circle cx="102" cy="50" r="5" fill="#28c840"/>
-          <!-- nav items -->
-          <rect x="130" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
-          <rect x="176" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
-          <rect x="222" y="44" width="40" height="12" rx="3" fill="rgba(255,255,255,0.06)"/>
-          <rect x="388" y="42" width="60" height="16" rx="4" fill="url(#cyanG)" opacity="0.8"/>
- 
-          <!-- hero area -->
-          <rect x="58" y="68" width="180" height="232" fill="rgba(0,0,0,0.15)"/>
-          <!-- big heading lines -->
-          <rect x="70" y="88" width="120" height="10" rx="3" fill="rgba(255,255,255,0.7)"/>
-          <rect x="70" y="104" width="150" height="10" rx="3" fill="rgba(255,255,255,0.7)"/>
-          <rect x="70" y="120" width="100" height="10" rx="3" fill="url(#cyanG)" opacity="0.9"/>
-          <!-- subtext -->
-          <rect x="70" y="140" width="140" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
-          <rect x="70" y="152" width="120" height="6" rx="2" fill="rgba(255,255,255,0.25)"/>
-          <!-- CTA buttons -->
-          <rect x="70" y="170" width="80" height="22" rx="6" fill="url(#cyanG)" opacity="0.9"/>
-          <rect x="158" y="170" width="70" height="22" rx="6" fill="rgba(255,255,255,0.08)" stroke="rgba(255,255,255,0.15)" stroke-width="1"/>
- 
-          <!-- right side of screen — big card mockup -->
-          <rect x="250" y="75" width="220" height="215" rx="12" fill="url(#heroCardG)" stroke="rgba(34,211,238,0.2)" stroke-width="1"/>
-          <!-- card header -->
-          <rect x="262" y="87" width="80" height="8" rx="3" fill="rgba(255,255,255,0.6)"/>
-          <rect x="262" y="101" width="60" height="6" rx="2" fill="rgba(255,255,255,0.2)"/>
-          <!-- abstract shapes in card -->
-          <circle cx="390" cy="160" r="60" fill="rgba(34,211,238,0.06)" stroke="rgba(34,211,238,0.12)" stroke-width="1"/>
-          <circle cx="390" cy="160" r="40" fill="rgba(59,130,246,0.08)" stroke="rgba(59,130,246,0.15)" stroke-width="1"/>
-          <circle cx="390" cy="160" r="22" fill="rgba(34,211,238,0.12)"/>
-          <rect x="262" y="240" width="90" height="18" rx="5" fill="rgba(34,211,238,0.6)" opacity="0.8"/>
-          <rect x="358" y="240" width="60" height="18" rx="5" fill="rgba(255,255,255,0.06)" stroke="rgba(255,255,255,0.1)" stroke-width="1"/>
- 
-          <!-- floating sphere 1 -->
-          <circle cx="230" cy="200" r="20" fill="rgba(34,211,238,0.2)" stroke="rgba(34,211,238,0.4)" stroke-width="1"/>
-          <!-- floating sphere 2 -->
-          <circle cx="132" cy="260" r="14" fill="rgba(59,130,246,0.25)" stroke="rgba(59,130,246,0.5)" stroke-width="1"/>
-          <!-- floating card -->
-          <rect x="390" y="48" width="80" height="55" rx="8" fill="rgba(255,255,255,0.04)" stroke="rgba(34,211,238,0.15)" stroke-width="1" transform="rotate(-8 430 75)"/>
- 
-          <!-- glow ring around screen -->
-          <rect x="58" y="32" width="424" height="268" rx="8" fill="none" stroke="rgba(34,211,238,0.06)" stroke-width="2"/>
-        </g>
- 
-        <!-- camera dot -->
-        <circle cx="270" cy="30" r="3" fill="#1a2a42"/>
-        <circle cx="270" cy="30" r="1.5" fill="#22d3ee" opacity="0.4"/>
-      </svg>
-    </div>
+   <div class="hero-right" id="hero-3d-wrapper">
+  <canvas id="globe-canvas"></canvas>
+</div>
   </div>
 </section>
  
@@ -300,48 +202,146 @@
       <p class="section-sub">From design to deployment, we handle everything so you can focus on running your business.</p>
     </div>
     <div class="services-grid">
-      <div class="srv-card reveal">
-        <div class="srv-icon">🎨</div>
+
+      <!-- 1 — UI/UX Design -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">UI/UX Design</div>
+          <div class="srv-popup-desc">We craft pixel-perfect interfaces that feel intuitive and convert visitors into loyal customers.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="8"/>
+            <line x1="12" y1="16" x2="12" y2="22"/>
+            <line x1="2" y1="12" x2="8" y2="12"/>
+            <line x1="16" y1="12" x2="22" y2="12"/>
+          </svg>
+        </div>
         <div class="srv-title">UI/UX Design</div>
         <p class="srv-desc">Beautiful, user-centered interfaces that convert visitors into loyal customers. Every pixel crafted with intent.</p>
         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">Figma</span><span class="srv-tag">Prototyping</span><span class="srv-tag">Wireframing</span></div>
+        <div class="srv-tags">
+          <span class="srv-tag">Figma</span>
+          <span class="srv-tag">Prototyping</span>
+          <span class="srv-tag">Wireframing</span>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-icon">💻</div>
+
+      <!-- 2 — Web Development -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">Web Development</div>
+          <div class="srv-popup-desc">Clean, scalable code built with modern frameworks. Fast load times and rock-solid performance.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="16 18 22 12 16 6"/>
+            <polyline points="8 6 2 12 8 18"/>
+            <line x1="12" y1="4" x2="12" y2="20" opacity="0.5"/>
+          </svg>
+        </div>
         <div class="srv-title">Web Development</div>
         <p class="srv-desc">Fast, scalable, and fully responsive websites built with the latest technologies and best practices.</p>
         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">React</span><span class="srv-tag">Next.js</span><span class="srv-tag">Node.js</span></div>
+        <div class="srv-tags">
+          <span class="srv-tag">React</span>
+          <span class="srv-tag">Next.js</span>
+          <span class="srv-tag">Node.js</span>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-icon">🛒</div>
+
+      <!-- 3 — E-Commerce -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">E-Commerce</div>
+          <div class="srv-popup-desc">Online stores built to sell. Seamless checkout, inventory management, and conversion optimization.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </div>
         <div class="srv-title">E-Commerce</div>
         <p class="srv-desc">Powerful online stores that drive sales — with seamless checkout, inventory management, and analytics.</p>
-         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">Shopify</span><span class="srv-tag">WooCommerce</span></div>
+        <div class="srv-divider"></div>
+        <div class="srv-tags">
+          <span class="srv-tag">Shopify</span>
+          <span class="srv-tag">WooCommerce</span>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-icon">📱</div>
+
+      <!-- 4 — Mobile Apps -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">Mobile Apps</div>
+          <div class="srv-popup-desc">Cross-platform apps that feel native on both iOS and Android. Beautiful UI, smooth performance.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="5" y="2" width="14" height="20" rx="3"/>
+            <line x1="12" y1="18" x2="12.01" y2="18" stroke-width="2.5"/>
+            <line x1="9" y1="6" x2="15" y2="6" opacity="0.5"/>
+          </svg>
+        </div>
         <div class="srv-title">Mobile Apps</div>
         <p class="srv-desc">Cross-platform mobile applications that deliver native-like performance on iOS and Android.</p>
-         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">React Native</span><span class="srv-tag">Flutter</span></div>
+        <div class="srv-divider"></div>
+        <div class="srv-tags">
+          <span class="srv-tag">React Native</span>
+          <span class="srv-tag">Flutter</span>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-icon">🔍</div>
+
+      <!-- 5 — SEO & Marketing -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">SEO & Marketing</div>
+          <div class="srv-popup-desc">Rank higher on Google and drive organic traffic that actually converts into real business.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="22 7 13.5 15.5 8.5 10.5 2 17"/>
+            <polyline points="16 7 22 7 22 13"/>
+          </svg>
+        </div>
         <div class="srv-title">SEO & Marketing</div>
         <p class="srv-desc">Get found on Google. We optimize your site to rank higher and attract organic traffic that converts.</p>
-         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">On-Page SEO</span><span class="srv-tag">Analytics</span></div>
+        <div class="srv-divider"></div>
+        <div class="srv-tags">
+          <span class="srv-tag">On-Page SEO</span>
+          <span class="srv-tag">Analytics</span>
+        </div>
       </div>
-      <div class="srv-card reveal">
-        <div class="srv-icon">⚡</div>
-        <div class="srv-title">Video Edit</div>
-        <p class="srv-desc">Speed up your existing website. Better performance means better rankings and higher conversions.</p>
-         <div class="srv-divider"></div>
-         <div class="srv-tags"><span class="srv-tag">Core Web Vitals</span><span class="srv-tag">CDN</span></div>
+
+      <!-- 6 — Video Editing -->
+      <div class="srv-card">
+        <div class="srv-popup">
+          <div class="srv-popup-title">Video Editing</div>
+          <div class="srv-popup-desc">Scroll-stopping reels, promos and social content that bring your brand story to life.</div>
+        </div>
+        <div class="srv-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2"/>
+            <line x1="6" y1="10" x2="6" y2="14" opacity="0.5"/>
+            <line x1="9" y1="9" x2="9" y2="15" opacity="0.5"/>
+            <line x1="12" y1="11" x2="12" y2="13" opacity="0.5"/>
+          </svg>
+        </div>
+        <div class="srv-title">Video Editing</div>
+        <p class="srv-desc">Professional video editing that brings your brand to life — reels, promos, and social content that stops the scroll.</p>
+        <div class="srv-divider"></div>
+        <div class="srv-tags">
+          <span class="srv-tag">Reels</span>
+          <span class="srv-tag">Promos</span>
+          <span class="srv-tag">Social Content</span>
+        </div>
       </div>
+
     </div>
   </div>
 </section>
@@ -439,104 +439,72 @@
 <!-- ── PROCESS ── -->
 <section id="process">
   <div class="section-inner">
-    <div class="reveal">
+    <div class="reveal" style="text-align:center;margin-bottom:56px;">
       <div class="section-eyebrow">How We Work</div>
       <h2 class="section-title">Our <span class="grad">Process</span></h2>
-      <p class="section-sub">A streamlined 4-step process that delivers results fast.</p>
+      <p class="section-sub" style="margin:0 auto;">A streamlined 4-step process that delivers results fast.</p>
     </div>
 
-    <div class="process-orbit">
+    <div class="stepper" id="stepper">
+      <div class="stepper-line-glow"></div>
+      <div class="stepper-line"></div>
 
-      <!-- center square hub -->
-      <div class="orbit-hub">
-        <div class="hub-corner hc1"></div>
-        <div class="hub-corner hc2"></div>
-        <div class="hub-corner hc3"></div>
-        <div class="hub-corner hc4"></div>
-        <div class="hub-core">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-          </svg>
-          <span>WEBIFY</span>
+      <div class="step-row s1">
+        <div class="step-node"><div class="step-circle">01</div></div>
+        <div class="step-body">
+          <div class="step-num">Step One</div>
+          <div class="step-title">Discovery</div>
+          <p class="step-desc" data-text="We deep-dive into your business, goals, and target audience. Understanding your brand inside-out lets us craft a strategy that's built to convert — not just look good."></p>
+          <div class="step-tags">
+            <span class="step-tag">Goals & Vision</span>
+            <span class="step-tag">Audience Research</span>
+            <span class="step-tag">Competitor Analysis</span>
+          </div>
         </div>
       </div>
 
-      <!-- four steps -->
-      <div class="orbit-track">
-
-        <div class="orbit-step" data-step="0">
-          <div class="step-planet">
-            <div class="planet-glow"></div>
-            <div class="planet-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/>
-              </svg>
-            </div>
-            <div class="planet-label">Discovery</div>
-            <div class="planet-num">01</div>
-             <div class="planet-desc">We learn your goals & audience</div>
-          </div>
-          <div class="step-popup">
-            <div class="popup-title">Discovery</div>
-            <div class="popup-desc" data-text="We deep-dive into your business, goals, and target audience to craft the perfect strategy."></div>
+      <div class="step-row s2">
+        <div class="step-node"><div class="step-circle">02</div></div>
+        <div class="step-body">
+          <div class="step-num">Step Two</div>
+          <div class="step-title">Design</div>
+          <p class="step-desc" data-text="Pixel-perfect mockups crafted in Figma for your approval — before a single line of code is written. You get full creative input at every stage."></p>
+          <div class="step-tags">
+            <span class="step-tag">Figma Mockups</span>
+            <span class="step-tag">UI/UX Design</span>
+            <span class="step-tag">Client Approval</span>
           </div>
         </div>
-
-        <div class="orbit-step" data-step="1">
-          <div class="step-planet">
-            <div class="planet-glow"></div>
-            <div class="planet-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/>
-              </svg>
-            </div>
-            <div class="planet-label">Design</div>
-            <div class="planet-num">02</div>
-             <div class="planet-desc">Pixel-perfect mockups crafted</div>
-          </div>
-          <div class="step-popup">
-            <div class="popup-title">Design</div>
-            <div class="popup-desc" data-text="Pixel-perfect mockups and prototypes crafted for your approval before any code is written."></div>
-          </div>
-        </div>
-
-        <div class="orbit-step" data-step="2">
-          <div class="step-planet">
-            <div class="planet-glow"></div>
-            <div class="planet-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
-              </svg>
-            </div>
-            <div class="planet-label">Development</div>
-            <div class="planet-num">03</div>
-             <div class="planet-desc">Fast, scalable & clean code</div>
-          </div>
-          <div class="step-popup">
-            <div class="popup-title">Development</div>
-            <div class="popup-desc" data-text="Fast, responsive, scalable websites built with modern technologies and clean code."></div>
-          </div>
-        </div>
-
-        <div class="orbit-step" data-step="3">
-          <div class="step-planet">
-            <div class="planet-glow"></div>
-            <div class="planet-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
-              </svg>
-            </div>
-            <div class="planet-label">Launch</div>
-            <div class="planet-num">04</div>
-             <div class="planet-desc">Deploy, test & ongoing support</div>
-          </div>
-          <div class="step-popup">
-            <div class="popup-title">Launch & Support</div>
-            <div class="popup-desc" data-text="We deploy, test thoroughly, and stay by your side post-launch to ensure perfection."></div>
-          </div>
-        </div>
-
       </div>
+
+      <div class="step-row s3">
+        <div class="step-node"><div class="step-circle">03</div></div>
+        <div class="step-body">
+          <div class="step-num">Step Three</div>
+          <div class="step-title">Development</div>
+          <p class="step-desc" data-text="Fast, responsive, and fully scalable websites built with modern technologies. Clean code, lightning-fast load times, and SEO-ready from day one."></p>
+          <div class="step-tags">
+            <span class="step-tag">Clean Code</span>
+            <span class="step-tag">Mobile Responsive</span>
+            <span class="step-tag">SEO Ready</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="step-row s4">
+        <div class="step-node"><div class="step-circle">04</div></div>
+        <div class="step-body">
+          <div class="step-num">Step Four</div>
+          <div class="step-title">Launch & Support</div>
+          <p class="step-desc" data-text="We deploy, test thoroughly, and stay by your side post-launch. 24/7 support, ongoing updates, and a partner who's invested in your growth long-term."></p>
+          <div class="step-tags">
+            <span class="step-tag">Live Deployment</span>
+            <span class="step-tag">Testing & QA</span>
+            <span class="step-tag">24/7 Support</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -630,6 +598,8 @@
   <div class="footer-copy">© 2025 Portfolio Agency. All rights reserved.</div>
 </footer>
  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="globe.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
