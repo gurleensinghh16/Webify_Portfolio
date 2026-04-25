@@ -1070,13 +1070,29 @@ footer{
   .nav-links{display:none;}
   #hero{padding:90px 5% 60px;}
   section{padding:70px 5%;}
-  .stats-grid{grid-template-columns:1fr 1fr;}
+  .stats-grid{
+    grid-template-columns:1fr 1fr;
+    flex-wrap:wrap;
+    gap:14px;
+  }
   .services-grid{grid-template-columns:1fr;}
   .portfolio-grid{grid-template-columns:1fr;}
   .process-grid{grid-template-columns:1fr;}
   .form-row{grid-template-columns:1fr;}
   .contact-card{padding:36px 24px;}
   footer{flex-direction:column;text-align:center;}
+  .stat-card{
+    flex:1 1 calc(50% - 7px);
+    min-width:calc(50% - 7px);
+    animation:none;
+  }
+}
+
+@media(max-width:480px){
+  .stat-card{
+    flex:1 1 100%;
+    min-width:100%;
+  }
 }
 /* ── DARK TEXT FIXES ── */
 .proc-num{
