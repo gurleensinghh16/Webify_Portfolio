@@ -216,3 +216,91 @@ orbitSteps.forEach((step, i) => {
     }, 3800);
   });
 });
+// ── ABOUT TYPEWRITER with HTML color marks ──
+function initAboutTypewriters() {
+  const paras = document.querySelectorAll('.about-para.abt-typewriter');
+  if (!paras.length) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const allParas = document.querySelectorAll('.about-para.abt-typewriter');
+        allParas.forEach((para, index) => {
+          const fullHTML = para.dataset.text;
+          if (!fullHTML || para._typed) return;
+          para._typed = true;
+
+          setTimeout(() => {
+            typeHTML(para, fullHTML, 18);
+          }, 600 + index * 700);
+        });
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  paras.forEach(p => observer.observe(p));
+}
+
+function typeHTML(el, html, speed) {
+  // parse into a temp element so we can walk real nodes
+  const temp = document.createElement('div');
+  temp.innerHTML = html;
+  el.innerHTML = '';
+
+  const nodes = Array.from(temp.childNodes);
+  let nodeIndex = 0;
+  let charIndex = 0;
+  let currentTextNode = null;
+  let currentMark = null;
+
+  function next() {
+    if (nodeIndex >= nodes.length) return;
+
+    const node = nodes[nodeIndex];
+
+    // text node
+    if (node.nodeType === 3) {
+      const text = node.textContent;
+      if (charIndex === 0) {
+        currentTextNode = document.createTextNode('');
+        el.appendChild(currentTextNode);
+      }
+      if (charIndex < text.length) {
+        currentTextNode.textContent += text[charIndex];
+        charIndex++;
+        setTimeout(next, speed);
+      } else {
+        charIndex = 0;
+        nodeIndex++;
+        setTimeout(next, speed);
+      }
+    }
+    // element node (our mark highlights)
+    else if (node.nodeType === 1) {
+      const tag = node.tagName.toLowerCase();
+      const cls = node.className;
+      const text = node.textContent;
+
+      if (charIndex === 0) {
+        currentMark = document.createElement(tag);
+        currentMark.className = cls;
+        currentMark.textContent = '';
+        el.appendChild(currentMark);
+      }
+      if (charIndex < text.length) {
+        currentMark.textContent += text[charIndex];
+        charIndex++;
+        setTimeout(next, speed);
+      } else {
+        charIndex = 0;
+        nodeIndex++;
+        setTimeout(next, speed);
+      }
+    }
+  }
+
+  next();
+}
+
+initAboutTypewriters();
