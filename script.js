@@ -68,7 +68,7 @@ function animate() {
 animate();
  
 // ── Scroll reveal ──
-const reveals = document.querySelectorAll('.reveal');
+const reveals = document.querySelectorAll('.reveal, .fade-up');
 const observer = new IntersectionObserver((entries) => {
   entries.forEach((e, i) => {
     if (e.isIntersecting) {
