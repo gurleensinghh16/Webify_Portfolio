@@ -105,3 +105,13 @@ window.addEventListener('scroll', () => {
     a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--white)' : '';
   });
 });
+
+// ── ACCORDION PORTFOLIO — hover triggered + float ──
+const accItems = document.querySelectorAll('.acc-item');
+
+accItems.forEach(item => {
+  item.addEventListener('mouseenter', () => {
+    accItems.forEach(i => i.classList.remove('open'));
+    item.classList.add('open');
+  });
+});
