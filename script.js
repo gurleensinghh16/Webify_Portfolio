@@ -106,12 +106,47 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ── ACCORDION PORTFOLIO — hover triggered + float ──
+// ── ACCORDION PORTFOLIO — hover + typewriter ──
 const accItems = document.querySelectorAll('.acc-item');
 
+function typeWrite(el, text, speed = 28) {
+  el.textContent = '';
+  let i = 0;
+  const interval = setInterval(() => {
+    if (i < text.length) {
+      el.textContent += text[i];
+      i++;
+    } else {
+      clearInterval(interval);
+    }
+  }, speed);
+  el._typeInterval = interval;
+}
+
+function openItem(item) {
+  accItems.forEach(i => {
+    i.classList.remove('open');
+    const tw = i.querySelector('.acc-typewriter');
+    if (tw && tw._typeInterval) clearInterval(tw._typeInterval);
+    if (tw) tw.textContent = '';
+  });
+
+  item.classList.add('open');
+
+  const tw = item.querySelector('.acc-typewriter');
+  if (tw) {
+    setTimeout(() => typeWrite(tw, tw.dataset.text), 350);
+  }
+}
 accItems.forEach(item => {
-  item.addEventListener('mouseenter', () => {
-    accItems.forEach(i => i.classList.remove('open'));
-    item.classList.add('open');
+  item.addEventListener('mouseenter', () => openItem(item));
+  item.addEventListener('mouseleave', () => {
+    item.classList.remove('open');
+    const tw = item.querySelector('.acc-typewriter');
+    if (tw && tw._typeInterval) clearInterval(tw._typeInterval);
+    if (tw) tw.textContent = '';
   });
 });
+
+// open first by default
+if (accItems.length) openItem(accItems[0]);
