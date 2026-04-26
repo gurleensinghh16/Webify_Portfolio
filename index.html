@@ -3,7 +3,31 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Portfolio — Digital Agency</title>
+<title>Webify — Web Design & Development Agency in Mohali</title>
+
+<!-- ── PRIMARY META TAGS ── -->
+<meta name="title" content="Webify — Web Design & Development Agency in Mohali"/>
+<meta name="description" content="Webify is a digital agency in Mohali offering Web Design, Web App Development, E-Commerce Stores, SEO Services and Website Maintenance. Get your website in 3-5 days!"/>
+<meta name="keywords" content="web design mohali, website development mohali, web app development, ecommerce store india, SEO services mohali, website maintenance, digital agency mohali, webify"/>
+<meta name="author" content="Webify Digital Agency"/>
+<meta name="robots" content="index, follow"/>
+
+<!-- ── OPEN GRAPH (WhatsApp & Facebook preview) ── -->
+<meta property="og:type" content="website"/>
+<meta property="og:url" content="https://webify.in/"/>
+<meta property="og:title" content="Webify — Web Design & Development Agency in Mohali"/>
+<meta property="og:description" content="We build modern, high-performing websites that help businesses grow online. Web Design, Web Apps, E-Commerce, SEO & Website Maintenance."/>
+<meta property="og:image" content="https://webify.in/assets/logo.png"/>
+
+<!-- ── TWITTER/X PREVIEW ── -->
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:title" content="Webify — Web Design & Development Agency in Mohali"/>
+<meta name="twitter:description" content="We build modern, high-performing websites that help businesses grow online. Web Design, Web Apps, E-Commerce, SEO & Website Maintenance."/>
+<meta name="twitter:image" content="https://webify.in/assets/logo.png"/>
+
+<!-- ── FAVICON ── -->
+<link rel="icon" type="image/png" href="assets/logo.png"/>
+<link rel="apple-touch-icon" href="assets/logo.png"/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -554,30 +578,38 @@
     <p class="section-sub" style="text-align:center;margin:0 auto 0;">Tell us about your project and we'll get back to you within 24 hours.</p>
   </div>
   <div class="contact-card reveal">
-    <form class="contact-form" onsubmit="return false;">
+    <form class="contact-form">
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Your Name</label>
-          <input class="form-input" type="text" placeholder="John Doe"/>
+          <input class="form-input" type="text" name="name" placeholder="John Doe"/>
         </div>
         <div class="form-group">
           <label class="form-label">Email Address</label>
-          <input class="form-input" type="email" placeholder="john@company.com"/>
+          <input class="form-input" type="email" name="email" placeholder="john@company.com"/>
         </div>
       </div>
       <div class="form-row">
         <div class="form-group">
           <label class="form-label">Phone Number</label>
-          <input class="form-input" type="tel" placeholder="+91 98000 00000"/>
+          <input class="form-input" type="tel" name="phone" placeholder="+91 98000 00000"/>
         </div>
         <div class="form-group">
-          <label class="form-label">Service Needed</label>
-          <input class="form-input" type="text" placeholder="Web Design, SEO..."/>
-        </div>
+  <label class="form-label">Service Needed</label>
+  <div class="checkbox-group">
+    <label class="checkbox-item"><input type="checkbox" name="service" value="UI/UX Design"/> UI/UX Design</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="Web Development"/> Web Development</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="E-Commerce Store"/> E-Commerce Store</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="Mobile App"/> Mobile App</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="SEO & Marketing"/> SEO & Marketing</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="Video Editing"/> Video Editing</label>
+    <label class="checkbox-item"><input type="checkbox" name="service" value="Full Package"/> Full Package</label>
+  </div>
+</div>
       </div>
       <div class="form-group">
         <label class="form-label">Project Details</label>
-        <textarea class="form-textarea" placeholder="Tell us about your project, goals, and timeline..."></textarea>
+        <textarea class="form-textarea" name="message" placeholder="Tell us about your project, goals, and timeline..."></textarea>
       </div>
       <button class="btn-submit" type="submit">Send Message →</button>
     </form>
@@ -601,6 +633,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="globe.js"></script>
 <script src="script.js"></script>
+<script src="formconnect.js"></script>
+<script src="socialbuttons.js"></script>
 </body>
 </html>
  

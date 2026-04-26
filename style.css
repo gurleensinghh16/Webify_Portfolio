@@ -1338,3 +1338,45 @@ footer{
   .contact-card{ padding:36px 24px; }
   footer{ flex-direction:column;text-align:center; }
 }
+/* checkbox in form  */
+/* ── CHECKBOX GROUP ── */
+.checkbox-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #a0b8d8;
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.02);
+  transition: all 0.2s ease;
+}
+
+.checkbox-item:hover {
+  border-color: rgba(34,211,238,0.3);
+  background: rgba(34,211,238,0.05);
+  color: #ffffff;
+}
+
+.checkbox-item input[type="checkbox"] {
+  width: 15px;
+  height: 15px;
+  accent-color: #22d3ee;
+  cursor: pointer;
+}
+
+.checkbox-item:has(input:checked) {
+  border-color: rgba(34,211,238,0.5);
+  background: rgba(34,211,238,0.08);
+  color: #22d3ee;
+}
