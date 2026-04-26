@@ -150,70 +150,76 @@ accItems.forEach(item => {
 
 // open first by default
 if (accItems.length) openItem(accItems[0]);
-// ── PROCESS ORBIT — hover opens + typewriter in popup ──
-const orbitSteps = document.querySelectorAll('.orbit-step');
-let currentPop = 0;
-let popTimer = null;
+// ── PROCESS STEPPER — typewriter + 3D tilt ──
+const stepRows = document.querySelectorAll('.step-row');
 
-const popupTexts = [
-  "We deep-dive into your business, goals, and target audience to craft the perfect strategy for success.",
-  "Pixel-perfect mockups and prototypes crafted for your approval before any code is written.",
-  "Fast, responsive, scalable websites built with modern technologies and clean code practices.",
-  "We deploy, test thoroughly, and stay by your side post-launch to ensure everything runs perfectly."
-];
-
-function typeText(el, text, speed = 22) {
+function typeStepText(el, text, speed, onDone) {
   el.textContent = '';
+  el.classList.add('typing');
   let i = 0;
-  if (el._t) clearInterval(el._t);
-  el._t = setInterval(() => {
-    if (i < text.length) { el.textContent += text[i]; i++; }
-    else clearInterval(el._t);
+  const t = setInterval(() => {
+    el.textContent += text[i];
+    i++;
+    if (i >= text.length) {
+      clearInterval(t);
+      el.classList.remove('typing');
+      el.classList.add('done');
+      if (onDone) onDone();
+    }
   }, speed);
 }
 
-function popStep(index) {
-  orbitSteps.forEach((s, si) => {
-    s.classList.remove('popped');
-    const d = s.querySelector('.popup-desc');
-    if (d && d._t) clearInterval(d._t);
-    if (d) d.textContent = '';
+function showStepTags(row) {
+  const tags = row.querySelectorAll('.step-tag');
+  tags.forEach((tag, i) => {
+    setTimeout(() => tag.classList.add('show'), i * 130);
   });
-
-  const step = orbitSteps[index];
-  step.classList.add('popped');
-  const desc = step.querySelector('.popup-desc');
-  if (desc) {
-    setTimeout(() => typeText(desc, popupTexts[index]), 300);
-  }
 }
 
-function startAuto() {
-  popStep(currentPop);
-  popTimer = setInterval(() => {
-    currentPop = (currentPop + 1) % orbitSteps.length;
-    popStep(currentPop);
-  }, 3800);
-}
+// scroll trigger — each row individually observed
+const stepObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const row = entry.target;
+    const idx = Array.from(stepRows).indexOf(row);
 
-if (orbitSteps.length) startAuto();
+    setTimeout(() => {
+      row.classList.add('visible');
+      const desc = row.querySelector('.step-desc');
+      if (desc && desc.dataset.text && !desc._typed) {
+        desc._typed = true;
+        setTimeout(() => {
+          typeStepText(desc, desc.dataset.text, 22, () => {
+            showStepTags(row);
+          });
+        }, 500);
+      }
+    }, idx * 180);
 
-orbitSteps.forEach((step, i) => {
-  const planet = step.querySelector('.step-planet');
+    stepObserver.unobserve(row);
+  });
+}, { threshold: 0.25 });
 
-  planet.addEventListener('mouseenter', () => {
-    clearInterval(popTimer);
-    popStep(i);
-    currentPop = i;
+stepRows.forEach(r => stepObserver.observe(r));
+
+// 3D tilt on each card
+document.querySelectorAll('.step-body').forEach(card => {
+  const row = card.closest('.step-row');
+
+  row.addEventListener('mouseenter', () => {
+    card.style.transition = 'transform 0.1s ease, box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease';
   });
 
-  planet.addEventListener('mouseleave', () => {
-    clearInterval(popTimer);
-    popStep(currentPop);
-    popTimer = setInterval(() => {
-      currentPop = (currentPop + 1) % orbitSteps.length;
-      popStep(currentPop);
-    }, 3800);
+  row.addEventListener('mousemove', (e) => {
+    const rect = card.getBoundingClientRect();
+    const dx = (e.clientX - (rect.left + rect.width / 2)) / (rect.width / 2);
+    const dy = (e.clientY - (rect.top + rect.height / 2)) / (rect.height / 2);
+    card.style.transform = `perspective(900px) rotateX(${dy * -6}deg) rotateY(${dx * 8}deg) translateZ(14px)`;
+  });
+
+  row.addEventListener('mouseleave', () => {
+    card.style.transition = 'transform 0.5s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease, border-color 0.3s ease, background 0.3s ease';
+    card.style.transform = 'perspective(900px) rotateX(0deg) rotateY(0deg) translateZ(0px)';
   });
 });
 // ── ABOUT TYPEWRITER with HTML color marks ──
@@ -304,3 +310,51 @@ function typeHTML(el, html, speed) {
 }
 
 initAboutTypewriters();
+// ── SERVICES 3D ENTRANCE + FLOAT ──
+const srvCards = document.querySelectorAll('.srv-card');
+
+function resetServiceCards() {
+  srvCards.forEach(card => {
+    card.classList.remove('in-view', 'floating');
+    card.style.transition = 'none';
+    card.style.opacity = '0';
+    card.style.transform = 'translateX(-100vw) rotateY(-25deg)';
+  });
+}
+
+function launchServiceCards() {
+  srvCards.forEach((card, i) => {
+    setTimeout(() => {
+      // re-enable transition before animating
+      card.style.transition = '';
+      card.style.opacity = '';
+      card.style.transform = '';
+      card.classList.add('in-view');
+
+      setTimeout(() => {
+        card.classList.add('floating');
+      }, 1000);
+    }, i * 180);
+  });
+}
+
+const srvSection = document.querySelector('#services');
+let srvAnimating = false;
+
+const srvObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !srvAnimating) {
+      srvAnimating = true;
+      resetServiceCards();
+      // tiny delay after reset so browser repaints before animating
+      setTimeout(() => {
+        launchServiceCards();
+        setTimeout(() => {
+          srvAnimating = false;
+        }, srvCards.length * 180 + 1000);
+      }, 80);
+    }
+  });
+}, { threshold: 0.1 });
+
+if (srvSection) srvObserver.observe(srvSection);
