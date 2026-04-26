@@ -1,3 +1,23 @@
+// ── MOBILE MENU ──
+const hamburgerBtn = document.getElementById('hamburger-btn');
+const mobileMenu   = document.getElementById('mobile-menu');
+
+hamburgerBtn.addEventListener('click', () => {
+  hamburgerBtn.classList.toggle('open');
+  mobileMenu.classList.toggle('open');
+});
+
+function closeMobileMenu() {
+  hamburgerBtn.classList.remove('open');
+  mobileMenu.classList.remove('open');
+}
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+  if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+    closeMobileMenu();
+  }
+});
 // ── NAV scroll ──
 const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {

@@ -57,8 +57,20 @@
   </ul>
  
   <a href="#contact" class="nav-cta">Let's Talk →</a>
+<button class="hamburger-btn" id="hamburger-btn">
+  <span></span>
+  <span></span>
+  <span></span>
+</button>
 </nav>
- 
+ <div class="mobile-menu" id="mobile-menu">
+  <a href="#about"        onclick="closeMobileMenu()">About</a>
+  <a href="#services"     onclick="closeMobileMenu()">Services</a>
+  <a href="#portfolio"    onclick="closeMobileMenu()">Work</a>
+  <a href="#process"      onclick="closeMobileMenu()">Process</a>
+  <a href="#testimonials" onclick="closeMobileMenu()">Reviews</a>
+  <a href="#contact"      onclick="closeMobileMenu()">Let's Talk →</a>
+</div>
 <!-- ── HERO ── -->
 <section id="hero">
   <div class="hero-inner">
@@ -627,7 +639,7 @@
     <a href="#testimonials">Reviews</a>
     <a href="#contact">Contact</a>
   </div>
-  <div class="footer-copy">© 2025 Portfolio Agency. All rights reserved.</div>
+  <div class="footer-copy">© 2025 Webify Digital Agency. All rights reserved.</div>
 </footer>
  
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
