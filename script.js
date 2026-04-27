@@ -25,12 +25,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // make closeMobileMenu global for onclick in HTML
   window.closeMobileMenu = closeMobileMenu;
 });
-// ── NAV scroll ──
+// ── NAV scroll — throttled ──
 const navbar = document.getElementById('navbar');
+let navScrollTicking = false;
 window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  if (!navScrollTicking) {
+    requestAnimationFrame(() => {
+      navbar.classList.toggle('scrolled', window.scrollY > 40);
+      navScrollTicking = false;
+    });
+    navScrollTicking = true;
+  }
 });
- 
 // ── Background canvas particles ──
 const canvas = document.getElementById('bg-canvas');
 const ctx = canvas.getContext('2d');
@@ -66,7 +72,7 @@ class Particle {
   }
 }
  
-for (let i = 0; i < 120; i++) particles.push(new Particle());
+for (let i = 0; i < 60; i++) particles.push(new Particle());
  
 function drawConnections() {
   for (let i = 0; i < particles.length; i++) {
@@ -74,7 +80,7 @@ function drawConnections() {
       const dx = particles[i].x - particles[j].x;
       const dy = particles[i].y - particles[j].y;
       const d = Math.sqrt(dx*dx + dy*dy);
-      if (d < 100) {
+      if (d < 80) {
         ctx.beginPath();
         ctx.moveTo(particles[i].x, particles[i].y);
         ctx.lineTo(particles[j].x, particles[j].y);
@@ -148,8 +154,17 @@ function getActiveSection() {
   return cur;
 }
 
-// set on scroll
-window.addEventListener('scroll', () => setActiveLink(getActiveSection()));
+// set on scroll — throttled
+let navLinkTicking = false;
+window.addEventListener('scroll', () => {
+  if (!navLinkTicking) {
+    requestAnimationFrame(() => {
+      setActiveLink(getActiveSection());
+      navLinkTicking = false;
+    });
+    navLinkTicking = true;
+  }
+});
 
 // set on page load
 setActiveLink(getActiveSection());
@@ -410,9 +425,11 @@ const srvSection = document.querySelector('#services');
 let srvAnimating = false;
 
 const srvObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
+entries.forEach(entry => {
     if (entry.isIntersecting && !srvAnimating) {
       srvAnimating = true;
+      srvObserver.unobserve(entry.target);
+      resetServiceCards();
       resetServiceCards();
       setTimeout(() => {
         launchServiceCards();
@@ -428,3 +445,9 @@ const srvObserver = new IntersectionObserver((entries) => {
 });
 
 if (srvSection) srvObserver.observe(srvSection);
+// ── PERFORMANCE HINTS ──
+const bgCanvas = document.getElementById('bg-canvas');
+if (bgCanvas) bgCanvas.style.willChange = 'transform';
+
+const globeCanvas = document.getElementById('globe-canvas');
+if (globeCanvas) globeCanvas.style.willChange = 'transform';
