@@ -122,17 +122,37 @@ if (lw) {
   });
 }
  
-// ── Active nav link ──
+// ── Active nav link — permanent highlight based on scroll position ──
 const navLinks = document.querySelectorAll('.nav-links a');
+const mobileLinks = document.querySelectorAll('.mobile-menu a');
 const sections = document.querySelectorAll('section[id]');
-window.addEventListener('scroll', () => {
-  let cur = '';
-  sections.forEach(s => { if (window.scrollY >= s.offsetTop - 120) cur = s.id; });
-  navLinks.forEach(a => {
-    a.style.color = a.getAttribute('href') === '#' + cur ? 'var(--white)' : '';
-  });
-});
 
+function setActiveLink(id) {
+  // desktop nav
+  navLinks.forEach(a => {
+    const isActive = a.getAttribute('href') === '#' + id;
+    a.classList.toggle('nav-active', isActive);
+  });
+  // mobile menu
+  mobileLinks.forEach(a => {
+    const isActive = a.getAttribute('href') === '#' + id;
+    a.classList.toggle('nav-active', isActive);
+  });
+}
+
+function getActiveSection() {
+  let cur = '';
+  sections.forEach(s => {
+    if (window.scrollY >= s.offsetTop - 140) cur = s.id;
+  });
+  return cur;
+}
+
+// set on scroll
+window.addEventListener('scroll', () => setActiveLink(getActiveSection()));
+
+// set on page load
+setActiveLink(getActiveSection());
 // ── ACCORDION PORTFOLIO — scroll auto-open + typewriter ──
 const accItems = document.querySelectorAll('.acc-item');
 let accAutoOpened = false;

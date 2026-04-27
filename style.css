@@ -2016,3 +2016,18 @@ footer{
   transform:translateY(-2px);
   box-shadow:0 6px 20px rgba(168,85,247,0.25);
 }
+/* ── ACTIVE NAV LINK — permanent underline ── */
+.nav-links a.nav-active {
+  color: var(--white) !important;
+}
+.nav-links a.nav-active::after {
+  transform: scaleX(1) !important;
+}
+
+/* mobile active */
+.mobile-menu a.nav-active {
+  color: #22d3ee !important;
+  background: rgba(34,211,238,0.05) !important;
+  padding-left: calc(6% + 6px) !important;
+  border-left: 2px solid #22d3ee;
+}
