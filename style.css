@@ -221,7 +221,7 @@ nav.scrolled{
 }
 
 .hero-desc{
-  color:#8a9bbf;font-size:17px;line-height:1.7;
+  color: #b0c4de; font-size:17px;line-height:1.7;
   max-width:460px;margin-bottom:40px;
   opacity:0;transform:translateY(20px);
   animation:fadeUp 0.6s 0.4s forwards;
@@ -288,7 +288,7 @@ nav.scrolled{
 
 .hero-tag{
   display:flex;align-items:center;gap:8px;
-  color:var(--muted);font-size:13.5px;font-weight:500;
+   color: #a0b8d8;font-size:13.5px;font-weight:500;
 }
 
 .check-icon{
@@ -602,7 +602,7 @@ nav.scrolled{
 }
 
 .about-para{
-  color:#8a9bbf;
+ color: #a0b4cc;
   font-size:15.5px;
   line-height:1.8;
   margin-bottom:18px;
@@ -715,19 +715,11 @@ mark{ background:none; font-weight:700; padding:0 2px; border-radius:4px; }
 /* ── RESPONSIVE ABOUT ── */
 @media(max-width:1024px){
   .about-grid{ grid-template-columns:1fr; gap:60px; }
-  .about-visual{ order:2; }
+  .about-visual{ display:none; }
   .about-content{ order:1; }
 }
 @media(max-width:768px){
   .about-grid{ gap:40px; }
-  .about-visual{ height:380px; }
-  .abt-ring2{ width:340px; height:340px; }
-  .ao3{ transform:translate(-50%,-50%) rotate(0deg)   translateY(-170px) rotate(0deg); }
-  .ao4{ transform:translate(-50%,-50%) rotate(120deg) translateY(-170px) rotate(-120deg); }
-  .ao5{ transform:translate(-50%,-50%) rotate(240deg) translateY(-170px) rotate(-240deg); }
-  .abt-ring1{ width:240px; height:240px; }
-  .ao1{ transform:translate(-50%,-50%) rotate(0deg)   translateY(-120px) rotate(0deg); }
-  .ao2{ transform:translate(-50%,-50%) rotate(180deg) translateY(-120px) rotate(-180deg); }
   .about-values{ grid-template-columns:1fr; }
 }
 
@@ -908,7 +900,7 @@ mark{ background:none; font-weight:700; padding:0 2px; border-radius:4px; }
   text-shadow:0 0 20px color-mix(in srgb, var(--card-color) 40%, transparent);
 }
 
-.srv-desc{ color:#6a7a9a; font-size:14px; line-height:1.7; margin-bottom:24px; }
+.srv-desc{  color: #8a9bbf;  font-size:14px; line-height:1.7; margin-bottom:24px; }
 
 .srv-divider{
   width:100%;height:1px;
@@ -1556,7 +1548,34 @@ footer{
   section{ padding:60px 5%; }
   .form-row{ grid-template-columns:1fr; }
   .contact-card{ padding:32px 20px; }
-  footer{ flex-direction:column;text-align:center; }
+  footer{
+  flex-direction:column;
+  align-items:center;
+  text-align:center;
+  padding:32px 5% 100px;
+}
+
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:16px;
+  width:100%;
+}
+
+.footer-links a{
+  font-size:14px;
+}
+
+.footer-logo-name{
+  font-size:20px;
+}
+
+.footer-copy{
+  font-size:12px;
+  text-align:center;
+  width:100%;
+}
   .testi-grid{ grid-template-columns:1fr; }
   .services-grid{ grid-template-columns:1fr; }
   .srv-card{ padding:24px 18px; }
@@ -1919,4 +1938,14 @@ footer{
     text-align:center !important;
     font-size:9px !important;
   }
+}
+/* ── ENTRANCE ANIMATION ── */
+.logo-letter {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.hero-word {
+  display: inline-block;
+  will-change: transform, opacity;
 }

@@ -141,7 +141,7 @@
     /* Mobile size */
     @media(max-width: 768px) {
       #social-float {
-        bottom: 20px;
+        bottom: 100px;
         right: 16px;
         gap: 10px;
       }
