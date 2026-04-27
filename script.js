@@ -1,22 +1,29 @@
 // ── MOBILE MENU ──
-const hamburgerBtn = document.getElementById('hamburger-btn');
-const mobileMenu   = document.getElementById('mobile-menu');
+document.addEventListener('DOMContentLoaded', () => {
+  const hamburgerBtn = document.getElementById('hamburger-btn');
+  const mobileMenu   = document.getElementById('mobile-menu');
 
-hamburgerBtn.addEventListener('click', () => {
-  hamburgerBtn.classList.toggle('open');
-  mobileMenu.classList.toggle('open');
-});
+  if (!hamburgerBtn || !mobileMenu) return;
 
-function closeMobileMenu() {
-  hamburgerBtn.classList.remove('open');
-  mobileMenu.classList.remove('open');
-}
+  hamburgerBtn.addEventListener('click', () => {
+    hamburgerBtn.classList.toggle('open');
+    mobileMenu.classList.toggle('open');
+  });
 
-// Close menu when clicking outside
-document.addEventListener('click', (e) => {
-  if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
-    closeMobileMenu();
+  function closeMobileMenu() {
+    hamburgerBtn.classList.remove('open');
+    mobileMenu.classList.remove('open');
   }
+
+  // Close menu when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!hamburgerBtn.contains(e.target) && !mobileMenu.contains(e.target)) {
+      closeMobileMenu();
+    }
+  });
+
+  // make closeMobileMenu global for onclick in HTML
+  window.closeMobileMenu = closeMobileMenu;
 });
 // ── NAV scroll ──
 const navbar = document.getElementById('navbar');
@@ -336,25 +343,25 @@ const srvCards = document.querySelectorAll('.srv-card');
 function resetServiceCards() {
   srvCards.forEach(card => {
     card.classList.remove('in-view', 'floating');
-    card.style.transition = 'none';
-    card.style.opacity = '0';
-    card.style.transform = 'translateX(-100vw) rotateY(-25deg)';
+    card.style.cssText = 'opacity:0; transform:translateX(-100vw) rotateY(-25deg); transition:none;';
   });
 }
 
 function launchServiceCards() {
   srvCards.forEach((card, i) => {
     setTimeout(() => {
-      // re-enable transition before animating
-      card.style.transition = '';
-      card.style.opacity = '';
-      card.style.transform = '';
-      card.classList.add('in-view');
-
-      setTimeout(() => {
-        card.classList.add('floating');
-      }, 1000);
-    }, i * 180);
+      card.style.cssText = '';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          card.classList.add('in-view');
+          setTimeout(() => {
+            if (card.classList.contains('in-view')) {
+              card.classList.add('floating');
+            }
+          }, 1100);
+        });
+      });
+    }, i * 160);
   });
 }
 
@@ -366,15 +373,17 @@ const srvObserver = new IntersectionObserver((entries) => {
     if (entry.isIntersecting && !srvAnimating) {
       srvAnimating = true;
       resetServiceCards();
-      // tiny delay after reset so browser repaints before animating
       setTimeout(() => {
         launchServiceCards();
         setTimeout(() => {
           srvAnimating = false;
-        }, srvCards.length * 180 + 1000);
-      }, 80);
+        }, srvCards.length * 160 + 1200);
+      }, 100);
     }
   });
-}, { threshold: 0.1 });
+}, {
+  threshold: 0.08,
+  rootMargin: '0px 0px -50px 0px'
+});
 
 if (srvSection) srvObserver.observe(srvSection);
