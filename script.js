@@ -133,27 +133,29 @@ window.addEventListener('scroll', () => {
   });
 });
 
-// ── ACCORDION PORTFOLIO — hover + typewriter ──
+// ── ACCORDION PORTFOLIO — scroll auto-open + typewriter ──
 const accItems = document.querySelectorAll('.acc-item');
+let accAutoOpened = false;
 
-function typeWrite(el, text, speed = 28) {
+function typeWrite(el, text, speed = 22) {
+  if (!el) return;
   el.textContent = '';
   let i = 0;
-  const interval = setInterval(() => {
+  if (el._typeInterval) clearInterval(el._typeInterval);
+  el._typeInterval = setInterval(() => {
     if (i < text.length) {
       el.textContent += text[i];
       i++;
     } else {
-      clearInterval(interval);
+      clearInterval(el._typeInterval);
     }
   }, speed);
-  el._typeInterval = interval;
 }
 
 function openItem(item) {
-  accItems.forEach(i => {
-    i.classList.remove('open');
-    const tw = i.querySelector('.acc-typewriter');
+  accItems.forEach(it => {
+    it.classList.remove('open');
+    const tw = it.querySelector('.acc-typewriter');
     if (tw && tw._typeInterval) clearInterval(tw._typeInterval);
     if (tw) tw.textContent = '';
   });
@@ -161,22 +163,41 @@ function openItem(item) {
   item.classList.add('open');
 
   const tw = item.querySelector('.acc-typewriter');
-  if (tw) {
+  if (tw && tw.dataset.text) {
     setTimeout(() => typeWrite(tw, tw.dataset.text), 350);
   }
 }
+
+// hover still works on desktop
 accItems.forEach(item => {
   item.addEventListener('mouseenter', () => openItem(item));
-  item.addEventListener('mouseleave', () => {
-    item.classList.remove('open');
-    const tw = item.querySelector('.acc-typewriter');
-    if (tw && tw._typeInterval) clearInterval(tw._typeInterval);
-    if (tw) tw.textContent = '';
-  });
 });
 
-// open first by default
-if (accItems.length) openItem(accItems[0]);
+// AUTO-OPEN on scroll into view — cycles through all cards then stays on first
+const accSection = document.querySelector('#portfolio');
+const accObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !accAutoOpened) {
+      accAutoOpened = true;
+
+      // open first card immediately
+      openItem(accItems[0]);
+
+      // cycle through remaining cards
+      accItems.forEach((item, i) => {
+        if (i === 0) return;
+        setTimeout(() => openItem(item), i * 2800);
+      });
+
+      // after all cards shown, go back to first and stay
+      setTimeout(() => {
+        openItem(accItems[0]);
+      }, accItems.length * 2800);
+    }
+  });
+}, { threshold: 0.3 });
+
+if (accSection) accObserver.observe(accSection);
 // ── PROCESS STEPPER — typewriter + 3D tilt ──
 const stepRows = document.querySelectorAll('.step-row');
 
