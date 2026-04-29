@@ -1,3 +1,5 @@
+// ── PREVENT SCROLL DURING LOADING ──
+document.body.classList.add('loading');
 // ── MOBILE MENU ──
 document.addEventListener('DOMContentLoaded', () => {
   const hamburgerBtn = document.getElementById('hamburger-btn');
@@ -450,3 +452,63 @@ if (bgCanvas) bgCanvas.style.willChange = 'transform';
 
 const globeCanvas = document.getElementById('globe-canvas');
 if (globeCanvas) globeCanvas.style.willChange = 'transform';
+// ── PAGE LOADER ──
+
+const chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ$#@%&*";
+
+const targetText = "WEBIFY";
+const textEl = document.getElementById("loader-text");
+const progressEl = document.querySelector(".loader-progress");
+const percentEl = document.getElementById("loader-percent");
+
+let progress = 0;
+
+function getRandomChar() {
+  return chars[Math.floor(Math.random() * chars.length)];
+}
+
+function scrambleText(progressIndex) {
+  let result = "";
+
+  for (let i = 0; i < targetText.length; i++) {
+    if (i < progressIndex) {
+      result += targetText[i]; // correct letter
+    } else {
+      result += getRandomChar(); // random letter
+    }
+  }
+
+  return result;
+}
+
+function startLoader() {
+  const interval = setInterval(() => {
+    progress++;
+
+    // update progress bar
+    progressEl.style.width = progress + "%";
+    percentEl.textContent = progress + "%";
+
+    // calculate how many letters should be correct
+    const revealCount = Math.floor((progress / 100) * targetText.length);
+
+    textEl.textContent = scrambleText(revealCount);
+
+    if (progress >= 100) {
+      clearInterval(interval);
+       document.body.classList.remove("loading");
+      // small delay then remove loader
+      setTimeout(() => {
+        document.getElementById("webify-loader").style.opacity = "0";
+        
+        setTimeout(() => {
+          document.getElementById("webify-loader").remove();
+        }, 500);
+
+      }, 500);
+    }
+
+  }, 20); // speed control
+}
+
+startLoader();
