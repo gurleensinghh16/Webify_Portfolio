@@ -218,10 +218,6 @@ setTimeout(() => {
   }
 
   // ── START ON DOM READY ──
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', runEntrance);
-  } else {
-    runEntrance();
-  }
-
+  // expose globally
+window.startWebifyEntrance = runEntrance;
 })();

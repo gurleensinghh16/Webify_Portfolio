@@ -2175,3 +2175,17 @@ body.loading {
   font-size: 12px;
   opacity: 0.7;
 }
+/* ── BLOCK ANIMATIONS UNTIL LOADER FINISH ── */
+body.loading .fade-up,
+body.loading .hero-badge,
+body.loading .hero-title,
+body.loading .hero-desc,
+body.loading .hero-btns,
+body.loading .hero-tags,
+body.loading .hero-right,
+body.loading .logo-letter,
+body.loading .hero-word {
+  opacity: 0 !important;
+  transform: translateY(30px) !important;
+  animation: none !important;
+}

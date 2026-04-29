@@ -111,7 +111,9 @@ const observer = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.1 });
-reveals.forEach(r => observer.observe(r));
+function startScrollAnimations() {
+  reveals.forEach(r => observer.observe(r));
+}
  
 // ── 3D tilt on laptop ──
 const lw = document.getElementById('laptop-wrapper');
@@ -494,19 +496,32 @@ function startLoader() {
 
     textEl.textContent = scrambleText(revealCount);
 
-    if (progress >= 100) {
-      clearInterval(interval);
-       document.body.classList.remove("loading");
-      // small delay then remove loader
-      setTimeout(() => {
-        document.getElementById("webify-loader").style.opacity = "0";
-        
-        setTimeout(() => {
-          document.getElementById("webify-loader").remove();
-        }, 500);
+   if (progress >= 100) {
+  clearInterval(interval);
 
-      }, 500);
-    }
+  // enable scroll
+  document.body.classList.remove("loading");
+
+  // 🔥 START YOUR ENTRANCE ANIMATION HERE
+  if (window.startWebifyEntrance) {
+    window.startWebifyEntrance();
+  }
+
+  // also start scroll animations
+  if (typeof startScrollAnimations === "function") {
+    startScrollAnimations();
+  }
+
+  setTimeout(() => {
+    const loader = document.getElementById("webify-loader");
+    loader.style.opacity = "0";
+
+    setTimeout(() => {
+      loader.remove();
+    }, 500);
+
+  }, 400);
+}
 
   }, 20); // speed control
 }
