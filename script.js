@@ -430,7 +430,6 @@ entries.forEach(entry => {
       srvAnimating = true;
       srvObserver.unobserve(entry.target);
       resetServiceCards();
-      resetServiceCards();
       setTimeout(() => {
         launchServiceCards();
         setTimeout(() => {
